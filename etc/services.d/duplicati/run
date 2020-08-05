@@ -1,0 +1,3 @@
+#!/usr/bin/execlineb -P
+with-contenv importas PORT PORT
+/usr/bin/duplicati-server --webservice-port=${PORT} --webservice-interface=any

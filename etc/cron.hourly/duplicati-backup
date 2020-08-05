@@ -1,0 +1,10 @@
+#!/bin/sh
+
+git init /data
+git config -f /data/.git/config user.name "Duplicati Backup"
+git config -f /data/.git/config user.email "backup@localhost"
+
+find /data -type f -name \*.sqlite -exec /bin/sh -c \
+    "sqlite3 '{}' '.dump' > '{}.sql' && git -C /data add '{}.sql'" \;
+
+git -C /data commit -m "Autocommit" 2>/dev/null || true
