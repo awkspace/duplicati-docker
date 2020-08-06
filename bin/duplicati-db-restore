@@ -1,0 +1,4 @@
+#!/bin/sh
+
+find /data -type f -name \*.sql -exec /bin/sh -c \
+    "export file='{}' && rm -f \"\${file%.sql}\" && sqlite3 \"\${file%.sql}\" < \"\$file\" " \;

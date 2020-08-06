@@ -22,6 +22,7 @@ RUN apt-get update && \
     rm -f /duplicati.deb && \
     rm -rf /var/lib/apt/lists
 
+COPY bin /bin
 COPY etc /etc
 ENTRYPOINT ["/init"]
 

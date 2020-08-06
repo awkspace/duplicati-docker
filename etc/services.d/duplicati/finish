@@ -1,0 +1,4 @@
+#!/bin/sh
+mono_pid=$(pidof mono-sgen)
+kill "$mono_pid"
+while kill -0 "$mono_pid" 2>/dev/null ; do sleep 1 ; done
