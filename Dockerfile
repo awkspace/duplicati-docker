@@ -24,6 +24,7 @@ RUN apt-get update && \
 
 COPY bin /bin
 COPY etc /etc
+RUN ln -s /bin/duplicati-db-backup /etc/cron.hourly/
 ENTRYPOINT ["/init"]
 
 ENV XDG_CONFIG_HOME=/data
