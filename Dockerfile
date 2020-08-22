@@ -1,7 +1,7 @@
 FROM mono
 
 RUN apt-get update && \
-    apt-get install -y cron curl git sqlite3 && \
+    apt-get install -y curl git sqlite3 && \
     export S6_REPO="github.com/just-containers/s6-overlay" && \
     export S6_VERSION=$(curl https://$S6_REPO/releases/latest \
         | sed 's/.\+tag\/\(.\+\)".\+/\1/') && \
@@ -24,7 +24,6 @@ RUN apt-get update && \
 
 COPY bin /bin
 COPY etc /etc
-RUN ln -s /bin/duplicati-db-backup /etc/cron.hourly/
 ENTRYPOINT ["/init"]
 
 ENV XDG_CONFIG_HOME=/data
